@@ -6,21 +6,24 @@ const itemCountSpan = document.getElementById('item-count')
 const uncheckedCountSpan = document.getElementById('unchecked-count')
 
 /**
- * Main function
- */
-function newTodo() {
+ * First function.
+ * First get value from input;
+ * Verify if user doesn't click on 'cancel' or click on 'ok' with empty field.
+ * Create li with the value and structure of HTML.
+ * So add event listener in TODO.
+*/
+ function newTodo() {
   var newTODO = prompt("New TODO:");
-  var contentTODO = document.createTextNode(newTODO);
 
-  var closeTODO = document.createElement("SPAN");
-  var closeX = document.createTextNode("\u00D7");
-
-  var li = document.createElement("li");
-
-  if(newTODO == '' || newTODO == null){
-    alert('Please, you need write a TODO.');
-  }
+  if(newTODO == null) return;
+  if(newTODO == '') alert('Please, you need write a TODO.')
   else{
+    var contentTODO = document.createTextNode(newTODO);
+    var closeTODO = document.createElement("SPAN");
+    var li = document.createElement("li");
+
+    var closeX = document.createTextNode("\u00D7");
+
     closeTODO.className = "closeTODO";
 
     closeTODO.appendChild(closeX);
@@ -42,8 +45,8 @@ function newTodo() {
  * Here happens the program event management.
  * - One click in the TODO, mark as check
  * - One click in the close TODO button:
- *   if to be checked with check, so delete it and subtract one in item count,
- *   if not to be checked with check, delete it and subtract one in item count and in unchecked count
+ *   if to be checked, so delete it and subtract one in item count,
+ *   if not to be checked, delete it and subtract one in item count and in unchecked count
  * - Two click, unchecked the TODO and subtract one in unchecked count
  * - On mouse hover in TODO, change background color of TODO and also icon check appears
  */
